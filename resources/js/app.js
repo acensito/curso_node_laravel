@@ -1,7 +1,15 @@
 //require('./bootstrap');
 
-const socket = io.connect('http://192.168.0.54:3030');
-console.log(socket);
+var options = {
+    rememberUpgrade:true,
+    transports: ['websocket'],
+    secure:true, 
+    rejectUnauthorized: false
+    }
+
+const socket = io.connect('http://192.168.0.8:3030', options);
+
+//const socket = io("https://server-domain.com");
 
 //eventos click boton
 const botones = document.querySelectorAll('.btn');
