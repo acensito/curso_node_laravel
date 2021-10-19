@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Item;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $items = Item::get();
     return view('welcome')->with('items', $items);
+});
+
+Route::get('/admin', function() {
+    $orders = Order::get();
+    return view('admin')->with('orders', $orders);
 });

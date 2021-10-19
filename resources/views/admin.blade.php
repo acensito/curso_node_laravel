@@ -20,22 +20,19 @@
         </style>
         <!-- Scripts -->
         <script defer src="https://cdn.socket.io/4.2.0/socket.io.min.js"></script>
-        <script defer src="js/main.js"></script>
+        <script defer src="js/admin.js"></script>
     </head>
     <body>
-        <div class="row p-5">
-            @foreach ($items as $item)
-                <div class="col-lg-4 my-2">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <h3>{{$item->name}}</h3>
-                            <p class="text-muted">{{$item->description}}</p>
-                            <p><strong>PVP: {{ number_format($item->price, 2, ',', '.') }}</strong></p>
-                            <button data-id="{{ $item->id }}" id="boton" class="btn btn-primary">Buy</button>
-                        </div>
-                    </div>      
+        @foreach ($orders->reverse() as $order)
+        <div class="col-lg-4 my-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3>{{$order->order_code}}</h3>
+                    <p class="text-muted">{{$order->item_id}}</p>
+                    <p><strong>Cantidad: {{ $order->quantity }}</strong></p>
                 </div>
-            @endforeach
+            </div>      
         </div>
+    @endforeach
     </body>
 </html>
